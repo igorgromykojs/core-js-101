@@ -177,10 +177,10 @@ function isInsideCircle(circle, point) {
  *   'abracadabra'  => 'c'
  *   'entente' => null
  */
-function findFirstSingleChar(/* str */) {
-  throw new Error('Not implemented');
+function findFirstSingleChar(str) {
+  const match = str.match(/(.)(?!.*\1)(?<!\1.+)/);
+  return match && match[1];
 }
-
 
 /**
  * Returns the string representation of math interval,
@@ -204,10 +204,12 @@ function findFirstSingleChar(/* str */) {
  *   5, 3, true, true   => '[3, 5]'
  *
  */
-function getIntervalString(/* a, b, isStartIncluded, isEndIncluded */) {
-  throw new Error('Not implemented');
+function getIntervalString(a, b, isStartIncluded, isEndIncluded) {
+  const arr = [];
+  arr.push(a, b);
+  const str = `${isStartIncluded ? '[' : '('}${arr.sort()[0]}, ${arr.sort()[1]}${isEndIncluded ? ']' : ')'}`;
+  return str;
 }
-
 
 /**
  * Reverse the specified string (put all chars in reverse order)
@@ -238,8 +240,10 @@ function reverseString(str) {
  *   87354 => 45378
  *   34143 => 34143
  */
-function reverseInteger(/* num */) {
-  throw new Error('Not implemented');
+function reverseInteger(num) {
+  const str = String(num);
+  const res = str.split('').reverse().join('');
+  return Number(res);
 }
 
 
